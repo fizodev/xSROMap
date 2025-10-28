@@ -149,7 +149,7 @@ $('#search input[type="text"]').keypress(function(e) {
 	}
 });
 
-// Show coordinates link at search box
+// Show coordinates link at the search box and automatically trigger search
 window.onload = function(){
 	// Reading GET inputs
 	var GET = function(parameter) {
@@ -167,11 +167,14 @@ window.onload = function(){
 	if(!isNaN(x) && !isNaN(y)){
 		var z = parseFloat(GET("z"));
 		var r = parseFloat(GET("region"));
-		// Show link
+		// Show link and populate search box
 		if(!isNaN(z) && !isNaN(r))
 			$('#search input[type="text"]').val(x+","+y+","+z+","+r);
 		else
 			$('#search input[type="text"]').val(x+","+y);
+
+		// Automatically trigger the search
+		$('#search .input-group-append').click();
 	}
 };
 
